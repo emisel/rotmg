@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
@@ -14,6 +16,9 @@ public class Game extends Canvas implements Runnable {
 	public static int width = 300;
 	public static int height = width / 16 * 9;
 	public static int scale = 3;
+	
+	private BufferedImage view = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+	private int[] pixels = ((DataBufferInt)view.getRaster().getDataBuffer()).getData(); 
 	
 	private boolean running = false;
 	private JFrame frame;
