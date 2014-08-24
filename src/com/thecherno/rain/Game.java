@@ -10,6 +10,8 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.thecherno.rain.graphics.Screen;
+
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
@@ -17,6 +19,7 @@ public class Game extends Canvas implements Runnable {
 	public static int height = width / 16 * 9;
 	public static int scale = 3;
 	
+	private Screen screen;
 	private BufferedImage view = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt)view.getRaster().getDataBuffer()).getData(); 
 	
@@ -28,6 +31,7 @@ public class Game extends Canvas implements Runnable {
 		Dimension size = new Dimension(width * scale, height * scale);
 		setPreferredSize(size);
 		
+		screen = new Screen(width, height);
 		frame = new JFrame();
 	}
 	
