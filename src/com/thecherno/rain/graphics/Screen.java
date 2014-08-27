@@ -1,15 +1,23 @@
 package com.thecherno.rain.graphics;
 
+import java.util.Random;
+
 public class Screen {
 	private int width, height;
 	public int pixels[];
-	int counter = 0;
-	int xtime = 50,ytime = 100;
+	public int tiles[];
+	
+	private Random random = new Random();
 	
 	public Screen(int width, int height) {
 		this.width = width;
 		this.height = height;
 		pixels = new int[width * height];
+		tiles = new int[64 * 64];
+		
+		for (int i = 0; i< 64*64; i++) {
+			tiles[i] = random.nextInt(0xffffff);
+		}
 	}
 	public void clear(){
 		for (int i = 0; i < pixels.length; i++) {
@@ -18,18 +26,13 @@ public class Screen {
 	}
 	
 	public void render(){
-		counter++;
-		if (counter % 2 == 0) {
-			xtime++;
-		}
-		if (counter % 10 == 0) {
-			ytime++;
-		}
+		
 		for (int y = 0; y < height; y++) {
-			if (ytime < height && ytime > 0) {
+			if (y < height && y >= 0) {
 			for (int x = 0; x < width; x++) {
-				if (xtime < width && xtime > 0) {
-				  pixels[xtime + ytime * width] = 0xFF00FF;
+				if (x < width && x >= 0) {
+				  int tileIndex = (x >> 4) + (y >> 4) * 64;
+				  pixels[x + y * width] = tiles[tileIndex];
 				}
 			}
 			}
