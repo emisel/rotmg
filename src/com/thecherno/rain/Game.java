@@ -81,6 +81,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		stop();
 	}
+	int x = 0,y = 0;
 	private void render() {
 		BufferStrategy bs = getBufferStrategy();
 		if (bs == null) {
@@ -88,7 +89,7 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		screen.clear();
-		screen.render();
+		screen.render(x,y);
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
@@ -100,8 +101,8 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	private void update() {
-		// TODO Auto-generated method stub
-		
+		x++;
+		//y--;
 	}
 
 	public static void main(String[] args) {
