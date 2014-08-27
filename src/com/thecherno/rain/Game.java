@@ -11,6 +11,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import com.thecherno.rain.graphics.Screen;
+import com.thecherno.rain.input.Keyboard;
 
 public class Game extends Canvas implements Runnable {
 
@@ -26,6 +27,7 @@ public class Game extends Canvas implements Runnable {
 	private boolean running = false;
 	private JFrame frame;
 	private Thread gameThread;
+	private Keyboard keyboard;
 	
 	public Game() {
 		Dimension size = new Dimension(width * scale, height * scale);
@@ -33,6 +35,8 @@ public class Game extends Canvas implements Runnable {
 		
 		screen = new Screen(width, height);
 		frame = new JFrame();
+		keyboard = new Keyboard();
+		addKeyListener(keyboard);
 	}
 	
 	private synchronized void start(){
@@ -101,8 +105,21 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	private void update() {
-		x++;
-		//y--;
+		keyboard.update();
+		
+		if (keyboard.up) {
+			y--;
+		}
+        if (keyboard.down) {
+			y++;
+		}
+        if (keyboard.left) {
+			x--;
+		}
+        if (keyboard.right) {
+			x++;
+		}
+		
 	}
 
 	public static void main(String[] args) {
