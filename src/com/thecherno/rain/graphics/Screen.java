@@ -39,6 +39,7 @@ public class Screen {
 				//if (xx < width && xx >= 0) {
 				  int tileIndex = ((xx >> 4) & MAP_SIZE_MASK) + ((yy >> 4) & MAP_SIZE_MASK) * MAP_SIZE;
 				  pixels[x + y * width] = tiles[tileIndex];
+				  pixels[x + y * width] = Sprite.grass.pixels[(x & 15) + (y & 15) * Sprite.grass.SIZE];
 				//}
 			//}
 			}

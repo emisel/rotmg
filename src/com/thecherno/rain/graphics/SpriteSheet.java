@@ -11,11 +11,14 @@ public class SpriteSheet {
 	public final int SIZE;
 	public int [] pixels;
 	
+	public static SpriteSheet sheet = new SpriteSheet("/textures/sprite.png", 256);
+	
 	public SpriteSheet(String path,int size){
+	
 		this.SIZE = size;
 		this.path = path;
 		pixels = new int[SIZE * SIZE];
-		
+		load();
 	}
 	
 	private void load(){

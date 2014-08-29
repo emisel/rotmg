@@ -128,6 +128,7 @@ public class Game extends Canvas implements Runnable {
 		g.frame.setTitle("Rain");
 		g.frame.add(g);
 		g.frame.pack();
+		g.frame.setFocusable(true);
 		g.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		g.frame.setLocationRelativeTo(null);
 		g.frame.setVisible(true);
