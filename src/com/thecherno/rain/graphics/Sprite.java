@@ -6,6 +6,9 @@ public class Sprite {
 	private int x,y;
 	public int pixels[];
 	private SpriteSheet sheet;
+	
+	public static Sprite grass = new Sprite(16, 0, 0, null);
+	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		super();
 		SIZE = size;
