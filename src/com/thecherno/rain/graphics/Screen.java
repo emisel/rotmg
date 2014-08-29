@@ -29,19 +29,16 @@ public class Screen {
 		}
 	}
 	
-	public void render(int xoffset,int yoffset){
+	public void render(int xOffset,int yOffset){
 		
 		for (int y = 0; y < height; y++) {
-			int yy = y+yoffset;
-			//if (yy < height && yy >= 0) {
+			int yp = y + yOffset;
+			if (yp < 0 || yp >= height) continue;
+			
 			for (int x = 0; x < width; x++) {
-				int xx = x+xoffset;
-				//if (xx < width && xx >= 0) {
-				  int tileIndex = ((xx >> 4) & MAP_SIZE_MASK) + ((yy >> 4) & MAP_SIZE_MASK) * MAP_SIZE;
-				  pixels[x + y * width] = tiles[tileIndex];
-				  pixels[x + y * width] = Sprite.grass.pixels[(x & 15) + (y & 15) * Sprite.grass.SIZE];
-				//}
-			//}
+				int xp = x + xOffset;
+				if (xp < 0 || xp >= width) continue;
+				  pixels[xp + yp * width] = Sprite.grass.pixels[(x & 15) + (y & 15) * Sprite.grass.SIZE];
 			}
 		}
 	}

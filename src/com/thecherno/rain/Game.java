@@ -61,7 +61,7 @@ public class Game extends Canvas implements Runnable {
 		double delta = 0;
 		int frames = 0;
 		int updates = 0;
-		
+		requestFocus();
 		while(running) {
 			long now = System.nanoTime();
 			delta+= (now-lastTime) / ns;
@@ -108,16 +108,16 @@ public class Game extends Canvas implements Runnable {
 		keyboard.update();
 		
 		if (keyboard.up) {
-			y--;
-		}
-        if (keyboard.down) {
 			y++;
 		}
+        if (keyboard.down) {
+			y--;
+		}
         if (keyboard.left) {
-			x--;
+			x++;
 		}
         if (keyboard.right) {
-			x++;
+			x--;
 		}
 		
 	}
@@ -128,7 +128,6 @@ public class Game extends Canvas implements Runnable {
 		g.frame.setTitle("Rain");
 		g.frame.add(g);
 		g.frame.pack();
-		g.frame.setFocusable(true);
 		g.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		g.frame.setLocationRelativeTo(null);
 		g.frame.setVisible(true);
