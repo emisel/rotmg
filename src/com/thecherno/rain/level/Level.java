@@ -1,6 +1,7 @@
 package com.thecherno.rain.level;
 
 import com.thecherno.rain.graphics.Screen;
+import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.level.tile.Tile;
 
 public class Level {
@@ -44,6 +45,13 @@ public class Level {
 		int x1 = (xscroll + screen.width) >> 4;
 		int y0 = yscroll >> 4;
 		int y1 = (yscroll + screen.width) >> 4;
+		
+		for (int y = y0; y < y1; y++){
+			for (int x= x0 ; x < x1; x++){
+				getTile(x, y).render(x, y, screen);
+				
+			}
+		}
 	}
 	
 	public Tile getTile(int x, int y){
