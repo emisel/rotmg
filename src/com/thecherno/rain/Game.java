@@ -1,7 +1,6 @@
 package com.thecherno.rain;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -12,13 +11,15 @@ import javax.swing.JFrame;
 
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.input.Keyboard;
+import com.thecherno.rain.level.Level;
+import com.thecherno.rain.level.RandomLevel;
 
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 	public static int width = 300;
 	public static int height = width / 16 * 9;
-	public static int scale = 2;
+	public static int scale = 3;
 	
 	private Screen screen;
 	private BufferedImage view = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -26,6 +27,7 @@ public class Game extends Canvas implements Runnable {
 	
 	private boolean running = false;
 	private JFrame frame;
+	private Level level;
 	private Thread gameThread;
 	private Keyboard keyboard;
 	
@@ -36,6 +38,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		keyboard = new Keyboard();
+		level = new RandomLevel(64,64);
 		addKeyListener(keyboard);
 	}
 	
@@ -92,8 +95,10 @@ public class Game extends Canvas implements Runnable {
 			createBufferStrategy(3);
 			return;
 		}
+		
 		screen.clear();
-		screen.render(x,y);
+		level.render(x, y, screen);
+
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
@@ -108,10 +113,10 @@ public class Game extends Canvas implements Runnable {
 		keyboard.update();
 		
 		if (keyboard.up) {
-			y++;
+			y--;
 		}
         if (keyboard.down) {
-			y--;
+			y++;
 		}
         if (keyboard.left) {
 			x--;
