@@ -36,7 +36,11 @@ public class Level {
 	}
 	
 	public void render(int xscroll, int yscroll, Screen screen) {
-		
+		//corner pins
+		int x0 = xscroll >> 4;
+		int x1 = (xscroll + screen.width) >> 4;
+		int y0 = yscroll >> 4;
+		int y1 = (yscroll + screen.width) >> 4;
 	}
 
 }

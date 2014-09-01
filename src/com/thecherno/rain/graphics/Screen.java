@@ -5,7 +5,8 @@ import java.util.Random;
 import com.thecherno.rain.level.tile.Tile;
 
 public class Screen {
-	private int width, height;
+	public int width;
+	private int height;
 	private static final int MAP_SIZE = 128;
 	private static final int MAP_SIZE_MASK = MAP_SIZE - 1;
 	
