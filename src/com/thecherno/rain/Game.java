@@ -114,10 +114,10 @@ public class Game extends Canvas implements Runnable {
 			y--;
 		}
         if (keyboard.left) {
-			x++;
+			x--;
 		}
         if (keyboard.right) {
-			x--;
+			x++;
 		}
 		
 	}

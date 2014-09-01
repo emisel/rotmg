@@ -10,6 +10,8 @@ public class Screen {
 	private static final int MAP_SIZE = 128;
 	private static final int MAP_SIZE_MASK = MAP_SIZE - 1;
 	
+	public int xOffset, yOffset;
+	
 	public int pixels[];
 	public int tiles[];
 	
@@ -47,6 +49,8 @@ public class Screen {
 	}
 	
 	public void renderTile(int xp, int yp,Tile tile){
+		xp -= xOffset;
+		yp -= yOffset;
 		for (int y = 0; y< tile.sprite.SIZE; y++) {
 			//absolute pos
 			int ya = y + yp;
@@ -57,5 +61,9 @@ public class Screen {
 				pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
 			}
 		}
+	}
+	public void setOffset(int xOffset, int yOffset){
+		this.xOffset = xOffset;
+		this.yOffset = yOffset;
 	}
 }

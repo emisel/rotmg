@@ -37,6 +37,8 @@ public class Level {
 	}
 	
 	public void render(int xscroll, int yscroll, Screen screen) {
+		
+		screen.setOffset(xscroll, yscroll);
 		//corner pins
 		int x0 = xscroll >> 4;
 		int x1 = (xscroll + screen.width) >> 4;
