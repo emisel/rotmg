@@ -1,6 +1,7 @@
 package com.thecherno.rain.level;
 
 import com.thecherno.rain.graphics.Screen;
+import com.thecherno.rain.level.tile.Tile;
 
 public class Level {
 	protected int width,height;
@@ -41,6 +42,11 @@ public class Level {
 		int x1 = (xscroll + screen.width) >> 4;
 		int y0 = yscroll >> 4;
 		int y1 = (yscroll + screen.width) >> 4;
+	}
+	
+	public Tile getTile(int x, int y){
+		if (tiles[x + y * width] == 0) return Tile.grass;
+		return null;
 	}
 
 }
