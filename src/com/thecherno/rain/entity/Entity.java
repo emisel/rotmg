@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.thecherno.rain.level.Level;
 
-public class Entity {
+public abstract class Entity {
 
 	private int x,y;
 	private boolean removed = false;
