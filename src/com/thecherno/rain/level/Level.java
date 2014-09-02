@@ -42,7 +42,7 @@ public class Level {
 		screen.setOffset(xscroll, yscroll);
 		//corner pins
 		int x0 = xscroll >> 4;
-		int x1 = (xscroll + screen.width) >> 4;
+		int x1 = (xscroll + screen.width + 16) >> 4;
 		int y0 = yscroll >> 4;
 		int y1 = (yscroll + screen.width) >> 4;
 		
