@@ -18,4 +18,7 @@ public abstract class Mob extends Entity {
 	private boolean collision() {
 		return false;
 	}
+	public void render(){
+		
+	}
 }

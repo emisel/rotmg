@@ -2,11 +2,12 @@ package com.thecherno.rain.entity;
 
 import java.util.Random;
 
+import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.level.Level;
 
 public abstract class Entity {
 
-	private int x,y;
+	protected int x,y;
 	private boolean removed = false;
 	protected Level level;
 	protected final Random random = new Random();
@@ -15,7 +16,7 @@ public abstract class Entity {
 		
 	}
 	
-	public void render (){
+	public void render (Screen screen){
 		
 	}
 	

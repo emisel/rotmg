@@ -19,7 +19,7 @@ public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	public static int width = 300;
 	public static int height = width / 16 * 9;
-	public static int scale = 3;
+	public static int scale = 1;
 	
 	private Screen screen;
 	private BufferedImage view = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -38,7 +38,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		keyboard = new Keyboard();
-		level = new RandomLevel(64,64);
+		level = new RandomLevel(5,5);
 		addKeyListener(keyboard);
 	}
 	
