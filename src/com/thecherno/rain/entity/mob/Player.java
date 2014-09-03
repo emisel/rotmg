@@ -6,9 +6,11 @@ import com.thecherno.rain.input.Keyboard;
 
 public class Player extends Mob {
 	private Keyboard input;
+	private Sprite sprite;
 	
 	public Player(Keyboard input){
 		this.input = input;
+		sprite = Sprite.player_up;
 	}
 	public Player(int x, int y ){
 		this.x = x;
@@ -35,7 +37,12 @@ public class Player extends Mob {
 //		screen.renderPlayer(xx, yy+16, Sprite.player2);
 //		screen.renderPlayer(xx+16, yy+16, Sprite.player3);
 //		
-		screen.renderPlayer(x-16, y-16, Sprite.player);
+		if (dir == 3) sprite = Sprite.player_left;
+		if (dir == 1) sprite = Sprite.player_right;
+		if (dir == 2) sprite = Sprite.player_down;
+		if (dir == 0) sprite = Sprite.player_up;
+		
+		screen.renderPlayer(x-16, y-16, sprite);
 	}
 
 }

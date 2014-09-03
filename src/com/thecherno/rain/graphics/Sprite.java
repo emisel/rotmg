@@ -10,12 +10,12 @@ public class Sprite {
 	
 	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.sheet);
 	public static Sprite voidSprite = new Sprite(16, 0x000fd0);
-	public static Sprite player0 = new Sprite(16, 0, 10, SpriteSheet.sheet);
-	public static Sprite player1 = new Sprite(16, 1, 10, SpriteSheet.sheet);
-	public static Sprite player2 = new Sprite(16, 0, 11, SpriteSheet.sheet);
-	public static Sprite player3 = new Sprite(16, 1, 11, SpriteSheet.sheet);
+
 	
-	public static Sprite player = new Sprite(32,0,5,SpriteSheet.sheet);
+	public static Sprite player_up = new Sprite(32,0,5,SpriteSheet.sheet);
+	public static Sprite player_down = new Sprite(32,2,5,SpriteSheet.sheet);
+	public static Sprite player_right = new Sprite(32,1,5,SpriteSheet.sheet);
+	public static Sprite player_left = new Sprite(32,3,5,SpriteSheet.sheet);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		super();
