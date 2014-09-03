@@ -15,6 +15,8 @@ public class Sprite {
 	public static Sprite player2 = new Sprite(16, 0, 11, SpriteSheet.sheet);
 	public static Sprite player3 = new Sprite(16, 1, 11, SpriteSheet.sheet);
 	
+	public static Sprite player = new Sprite(32,0,5,SpriteSheet.sheet);
+	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		super();
 		SIZE = size;
