@@ -1,5 +1,7 @@
 package com.thecherno.rain.entity.mob;
 
+import com.thecherno.rain.graphics.Screen;
+import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.input.Keyboard;
 
 public class Player extends Mob {
@@ -15,13 +17,19 @@ public class Player extends Mob {
 	}
 	
 	public void update(){
-		if (input.right) x++;
-		if (input.left)  x--;
-		if (input.down)  y++;
-		if (input.up)  y--;
+		int xa = 0, ya = 0;
+		if (input.right) xa++;
+		if (input.left) xa--;
+		if (input.down) ya++;
+		if (input.up) ya--;
+		
+		if (xa != 0 || ya != 0) move(xa, ya);
+				
+				
 	}
 	
-	public void render(){
+	public void render(Screen screen){
+		screen.renderPlayer(x, y, Sprite.player0);
 		
 	}
 

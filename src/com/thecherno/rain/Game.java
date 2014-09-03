@@ -1,7 +1,9 @@
 package com.thecherno.rain;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -20,7 +22,7 @@ public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	public static int width = 300;
 	public static int height = width / 16 * 9;
-	public static int scale = 1;
+	public static int scale = 3;
 	
 	private Screen screen;
 	private BufferedImage view = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -40,7 +42,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		keyboard = new Keyboard();
-		level = new RandomLevel(5,5);
+		level = new RandomLevel(64,64);
 		player = new Player(keyboard);
 		addKeyListener(keyboard);
 	}
@@ -106,7 +108,10 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		screen.clear();
-		level.render(player.x, player.y, screen);
+		int xScroll = player.x - width / 2;
+		int yScroll = player.y - height / 2;
+		level.render(xScroll, yScroll, screen);
+		player.render(screen);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -114,6 +119,9 @@ public class Game extends Canvas implements Runnable {
 		
 		Graphics g = bs.getDrawGraphics();
 		g.drawImage(view, 0, 0,getWidth(),getHeight(),null);
+		g.setFont(new Font("Courier",0,50));
+		g.setColor(Color.WHITE);
+		g.drawString("x:" + player.x +"y:" + player.y, 50, 50);
 		g.dispose();
 		bs.show();
 	}
