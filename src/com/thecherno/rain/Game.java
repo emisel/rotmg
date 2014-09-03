@@ -9,6 +9,7 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.thecherno.rain.entity.mob.Player;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.input.Keyboard;
 import com.thecherno.rain.level.Level;
@@ -28,6 +29,7 @@ public class Game extends Canvas implements Runnable {
 	private boolean running = false;
 	private JFrame frame;
 	private Level level;
+	private Player player;
 	private Thread gameThread;
 	private Keyboard keyboard;
 	
@@ -39,6 +41,7 @@ public class Game extends Canvas implements Runnable {
 		frame = new JFrame();
 		keyboard = new Keyboard();
 		level = new RandomLevel(5,5);
+		player = new Player(keyboard);
 		addKeyListener(keyboard);
 	}
 	
@@ -88,7 +91,13 @@ public class Game extends Canvas implements Runnable {
 		}
 		stop();
 	}
-	int x = 0,y = 0;
+
+	private void update() {
+		keyboard.update();
+		player.update();
+		
+	}
+	
 	private void render() {
 		BufferStrategy bs = getBufferStrategy();
 		if (bs == null) {
@@ -97,7 +106,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		screen.clear();
-		level.render(x, y, screen);
+		level.render(player.x, player.y, screen);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -109,23 +118,7 @@ public class Game extends Canvas implements Runnable {
 		bs.show();
 	}
 
-	private void update() {
-		keyboard.update();
-		
-		if (keyboard.up) {
-			y--;
-		}
-        if (keyboard.down) {
-			y++;
-		}
-        if (keyboard.left) {
-			x--;
-		}
-        if (keyboard.right) {
-			x++;
-		}
-		
-	}
+	
 
 	public static void main(String[] args) {
 		Game g = new Game();
