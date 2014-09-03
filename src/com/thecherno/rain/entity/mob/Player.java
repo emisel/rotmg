@@ -15,10 +15,15 @@ public class Player extends Mob {
 	}
 	
 	public void update(){
-		if (input.right) x++;
-		if (input.left)  x--;
-		if (input.down)  y++;
-		if (input.up)  y--;
+		int xa = 0, ya = 0;
+		if (input.right) xa+=3;
+		if (input.left) xa--;
+		if (input.down) ya++;
+		if (input.up) ya--;
+		
+		if (xa != 0 || ya != 0) move(xa, ya);
+				
+				
 	}
 	
 	public void render(){
