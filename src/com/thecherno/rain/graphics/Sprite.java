@@ -9,7 +9,7 @@ public class Sprite {
 	
 	
 	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.sheet);
-	public static Sprite voidSprite = new Sprite(16, 0x00fd0);
+	public static Sprite voidSprite = new Sprite(16, 0x000fd0);
 	public static Sprite player0 = new Sprite(16, 0, 10, SpriteSheet.sheet);
 	public static Sprite player1 = new Sprite(16, 1, 10, SpriteSheet.sheet);
 	public static Sprite player2 = new Sprite(16, 0, 11, SpriteSheet.sheet);
