@@ -42,6 +42,7 @@ public class Player extends Mob {
 		if (dir == 2) sprite = Sprite.player_down;
 		if (dir == 0) sprite = Sprite.player_up;
 		
+		screen.renderPlayer(x-16, y-16, sprite);
 	}
 
 }

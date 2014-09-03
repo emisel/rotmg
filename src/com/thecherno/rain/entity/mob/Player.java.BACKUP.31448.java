@@ -20,7 +20,11 @@ public class Player extends Mob {
 	
 	public void update(){
 		int xa = 0, ya = 0;
+<<<<<<< HEAD
+		if (input.right) xa+=3;
+=======
 		if (input.right) xa++;
+>>>>>>> work
 		if (input.left) xa--;
 		if (input.down) ya++;
 		if (input.up) ya--;
@@ -42,6 +46,7 @@ public class Player extends Mob {
 		if (dir == 2) sprite = Sprite.player_down;
 		if (dir == 0) sprite = Sprite.player_up;
 		
+		screen.renderPlayer(x-16, y-16, sprite);
 	}
 
 }

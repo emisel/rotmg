@@ -1,5 +1,6 @@
 package com.thecherno.rain.graphics;
 
+import java.awt.Color;
 import java.util.Random;
 
 import com.thecherno.rain.level.tile.Tile;
@@ -51,6 +52,26 @@ public class Screen {
 			}
 		}
 	}
+	
+	public void renderPlayer(int xp, int yp,Sprite sprite){
+		xp -= xOffset;
+		yp -= yOffset;
+		for (int y = 0; y< 32; y++) {
+			//absolute pos
+			int ya = y + yp;
+			for (int x = 0; x< 32; x++) {
+				//absolute pos
+				int xa = x + xp;
+				if (xa < -32 || xa >= width || ya < 0 || ya >= height) break;
+				if (xa < 0) xa = 0;
+				int col = sprite.pixels[x + y * 32];
+				if (col != 0xffff00ff) {
+					pixels[xa + ya * width] = sprite.pixels[x + y * 32];
+				}
+			}
+		}
+	}
+	
 	public void setOffset(int xOffset, int yOffset){
 		this.xOffset = xOffset;
 		this.yOffset = yOffset;
