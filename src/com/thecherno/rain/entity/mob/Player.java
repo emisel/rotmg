@@ -31,7 +31,6 @@ public class Player extends Mob {
 	}
 	
 	public void render(Screen screen){
-	
 //		screen.renderPlayer(xx, yy, Sprite.player0);
 //		screen.renderPlayer(xx+16, yy, Sprite.player1);
 //		screen.renderPlayer(xx, yy+16, Sprite.player2);
@@ -42,6 +41,7 @@ public class Player extends Mob {
 		if (dir == 2) sprite = Sprite.player_down;
 		if (dir == 0) sprite = Sprite.player_up;
 		
+		screen.renderPlayer(x+16, y+16, sprite);
 	}
 
 }
