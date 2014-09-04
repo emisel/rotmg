@@ -13,11 +13,19 @@ public class Sprite {
 
 	
 	public static Sprite player_up = new Sprite(32,0,5,SpriteSheet.sheet);
+
 	public static Sprite player_down = new Sprite(32,2,5,SpriteSheet.sheet);
 	public static Sprite player_right = new Sprite(32,1,5,SpriteSheet.sheet);
 	public static Sprite player_left = new Sprite(32,3,5,SpriteSheet.sheet);
 	
 	public static Sprite player_side = new Sprite(32,1,5,SpriteSheet.sheet);
+	public static Sprite player_side_1 = new Sprite(32,1,6,SpriteSheet.sheet);
+	public static Sprite player_side_2 = new Sprite(32,1,7,SpriteSheet.sheet);
+
+	public static Sprite player_up_1 = new Sprite(32,0,6,SpriteSheet.sheet);
+	public static Sprite player_up_2 = new Sprite(32,0,7,SpriteSheet.sheet);
+	public static Sprite player_down_1 = new Sprite(32,2,6,SpriteSheet.sheet);
+	public static Sprite player_down_2 = new Sprite(32,2,7,SpriteSheet.sheet);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		super();
