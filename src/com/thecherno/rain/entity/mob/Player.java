@@ -31,17 +31,17 @@ public class Player extends Mob {
 	}
 	
 	public void render(Screen screen){
-//		screen.renderPlayer(xx, yy, Sprite.player0);
-//		screen.renderPlayer(xx+16, yy, Sprite.player1);
-//		screen.renderPlayer(xx, yy+16, Sprite.player2);
-//		screen.renderPlayer(xx+16, yy+16, Sprite.player3);
-//		
-		if (dir == 3) sprite = Sprite.player_left;
-		if (dir == 1) sprite = Sprite.player_right;
-		if (dir == 2) sprite = Sprite.player_down;
+		int flip = 0;
 		if (dir == 0) sprite = Sprite.player_up;
+		if (dir == 1) sprite = Sprite.player_side;
+		if (dir == 2) sprite = Sprite.player_down;
+		if (dir == 3) {
+			flip = 1;
+			sprite = Sprite.player_side;
+		}
+			
 		
-		screen.renderPlayer(x-16, y-16, sprite);
+		screen.renderPlayer(x-16, y- 16, sprite, flip);
 	}
 
 }

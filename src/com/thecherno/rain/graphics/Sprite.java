@@ -17,6 +17,8 @@ public class Sprite {
 	public static Sprite player_right = new Sprite(32,1,5,SpriteSheet.sheet);
 	public static Sprite player_left = new Sprite(32,3,5,SpriteSheet.sheet);
 	
+	public static Sprite player_side = new Sprite(32,1,5,SpriteSheet.sheet);
+	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		super();
 		SIZE = size;
