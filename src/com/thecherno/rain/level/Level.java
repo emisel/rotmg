@@ -19,7 +19,7 @@ public class Level {
 		loadLevel(path);
 	}
 
-	private void loadLevel(String path) {
+	protected void loadLevel(String path) {
 		// TODO Auto-generated method stub
 		
 	}
