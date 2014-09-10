@@ -22,6 +22,7 @@ public class SpawnLevel extends Level {
 			img = ImageIO.read(SpawnLevel.class.getResource(path));
 			int w = img.getWidth();
 			int h = img.getHeight();
+			tiles = new Tile[w * h];
 			img.getRGB(0, 0, w, h, levelPixels, 0, w);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -29,7 +30,12 @@ public class SpawnLevel extends Level {
 			System.out.println("Could not load level");
 		}
 	}
-	protected void generateLevel(){
+	
+	//grass 0xFF0000
+	//rock 0xFF0000
+	//flower 0xFF0000
+	protected void generateLevel() {
+		
 		
 	}
 }
