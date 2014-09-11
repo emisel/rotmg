@@ -31,11 +31,15 @@ public class SpawnLevel extends Level {
 		}
 	}
 	
-	//grass 0xFF0000
-	//rock 0xFF0000
-	//flower 0xFF0000
+	//grass 0x00FF00
+	//rock 0x7F7F00
+	//flower 0xFFFF00
 	protected void generateLevel() {
-		
+		for (int i = 0; i < levelPixels.length;i++){
+			if (levelPixels[i] == 0x00FF00) tiles[i] = Tile.grass;
+			if (levelPixels[i] == 0x7F7F00) tiles[i] = Tile.rock;
+			if (levelPixels[i] == 0xFFFF00) tiles[i] = Tile.flower;
+		}
 		
 	}
 }
