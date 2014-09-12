@@ -19,6 +19,7 @@ public class Level {
 
 	public Level(String path){
 		loadLevel(path);
+		generateLevel();
 	}
 
 	protected void loadLevel(String path) {
@@ -51,11 +52,14 @@ public class Level {
 
 		for (int y = y0; y < y1; y++){
 			for (int x= x0 ; x < x1; x++){
-				if (x < 0 || y < 0 || y >= height || x >= width) Tile.voidTile.render(x, y, screen) ;
-
-				else {
-					tiles[x + y * 16].render(x, y, screen);
+				if ((x + y * 16) < 0 || (x + y * 16) >= 256) {
+					Tile.voidTile.render(x, y, screen) ;
+					continue;
 				}
+
+				
+					tiles[x + y * 16].render(x, y, screen);
+				
 			}
 		}
 	}

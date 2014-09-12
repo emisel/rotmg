@@ -1,5 +1,6 @@
 package com.thecherno.rain.level;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -22,6 +23,7 @@ public class SpawnLevel extends Level {
 			int w = img.getWidth();
 			int h = img.getHeight();
 			tiles = new Tile[w * h];
+			levelPixels = new int[w * h];
 			img.getRGB(0, 0, w, h, levelPixels, 0, w);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -35,9 +37,14 @@ public class SpawnLevel extends Level {
 	//flower 0xFFFF00
 	protected void generateLevel() {
 		for (int i = 0; i < levelPixels.length;i++){
-			if (levelPixels[i] == 0x00FF00) tiles[i] = Tile.grass;
-			if (levelPixels[i] == 0x7F7F00) tiles[i] = Tile.rock;
-			if (levelPixels[i] == 0xFFFF00) tiles[i] = Tile.flower;
+			Color c0 = new Color(levelPixels[i]);
+			Color c = new Color(0xFF7F7F00);
+			System.out.println(c0.getBlue()+":"+c0.getGreen() + ":" +c0.getRed());
+			System.out.println(c.getBlue()+":"+c.getGreen() + ":" +c.getRed());
+			if (levelPixels[i] == 0xFF00FF00) tiles[i] = Tile.grass;
+			
+			if (levelPixels[i] == 0xFF7F7F00) tiles[i] = Tile.rock;
+			if (levelPixels[i] == 0xFFFFFF00) tiles[i] = Tile.flower;
 		}
 		
 	}
