@@ -9,7 +9,6 @@ import com.thecherno.rain.level.tile.Tile;
 
 public class SpawnLevel extends Level {
 
-	private Tile tiles[];
 	private int[] levelPixels;
 
 	public SpawnLevel(String path) {

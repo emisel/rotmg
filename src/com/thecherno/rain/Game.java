@@ -16,6 +16,7 @@ import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.input.Keyboard;
 import com.thecherno.rain.level.Level;
 import com.thecherno.rain.level.RandomLevel;
+import com.thecherno.rain.level.SpawnLevel;
 
 public class Game extends Canvas implements Runnable {
 
@@ -42,7 +43,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		keyboard = new Keyboard();
-		level = new RandomLevel(64,64);
+		level = new SpawnLevel("/textures/level.png");
 		player = new Player(keyboard);
 		addKeyListener(keyboard);
 	}
