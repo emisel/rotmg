@@ -1,8 +1,8 @@
 package com.thecherno.rain.graphics;
 
-import java.awt.Color;
 import java.util.Random;
 
+import com.thecherno.rain.level.Level;
 import com.thecherno.rain.level.tile.Tile;
 
 public class Screen {
@@ -10,6 +10,7 @@ public class Screen {
 	private int height;
 	private static final int MAP_SIZE = 128;
 	private static final int MAP_SIZE_MASK = MAP_SIZE - 1;
+	
 	
 	public int xOffset, yOffset;
 	
