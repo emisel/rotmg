@@ -3,6 +3,7 @@ package com.thecherno.rain.entity.mob;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.input.Keyboard;
+import com.thecherno.rain.level.TileCoordinate;
 
 public class Player extends Mob {
 	private Keyboard input;
@@ -17,6 +18,11 @@ public class Player extends Mob {
 	public Player(int x, int y ,Keyboard input){
 		this.x = x;
 		this.y = y;
+		this.input = input;
+	}
+	public Player(TileCoordinate tc ,Keyboard input){
+		this.x = tc.x();
+		this.y = tc.y();
 		this.input = input;
 	}
 	

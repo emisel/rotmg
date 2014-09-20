@@ -17,6 +17,7 @@ import com.thecherno.rain.input.Keyboard;
 import com.thecherno.rain.level.Level;
 import com.thecherno.rain.level.RandomLevel;
 import com.thecherno.rain.level.SpawnLevel;
+import com.thecherno.rain.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable {
 
@@ -44,7 +45,8 @@ public class Game extends Canvas implements Runnable {
 		frame = new JFrame();
 		keyboard = new Keyboard();
 		level = Level.spawn;
-		player = new Player((16 * 16) / 2,(16 * 16) /2 ,keyboard);
+		TileCoordinate playerSpawn = new TileCoordinate(30, 60);
+		player = new Player(playerSpawn ,keyboard);
 		addKeyListener(keyboard);
 	}
 	
