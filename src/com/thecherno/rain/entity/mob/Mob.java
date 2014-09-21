@@ -29,6 +29,11 @@ public abstract class Mob extends Entity {
 	public void update(){
 		
 	}
+	
+	protected void shoot(int x,int y, double dir){
+		System.out.println(dir);
+		
+	}
 
 	
 	private boolean collision(int xa, int ya) {

@@ -3,6 +3,7 @@ package com.thecherno.rain.entity.mob;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.input.Keyboard;
+import com.thecherno.rain.input.Mouse;
 import com.thecherno.rain.level.TileCoordinate;
 
 public class Player extends Mob {
@@ -42,9 +43,17 @@ public class Player extends Mob {
 			walking = false;
 		}
 				
-				
+		updateShooting();
 	}
 	
+	private void updateShooting() {
+		if (Mouse.getButton() == 1) {
+			double dx = (Mouse.getX() - 300/2);
+			double dy = (Mouse.getY() - 168/2);
+			double dir = Math.atan2(dx, dy);
+			shoot(x,y,dir);
+		}
+	}
 	public void render(Screen screen){
 		int flip = 0;
 		if (dir == 0) {
