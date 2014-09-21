@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import com.thecherno.rain.entity.mob.Player;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.input.Keyboard;
+import com.thecherno.rain.input.Mouse;
 import com.thecherno.rain.level.Level;
 import com.thecherno.rain.level.RandomLevel;
 import com.thecherno.rain.level.SpawnLevel;
@@ -48,7 +49,11 @@ public class Game extends Canvas implements Runnable {
 		TileCoordinate playerSpawn = new TileCoordinate(25, 55);
 		player = new Player(playerSpawn ,keyboard);
 		player.init(level);
+		
+		Mouse mouse = new Mouse();
 		addKeyListener(keyboard);
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 	}
 	
 	private synchronized void start(){
@@ -125,7 +130,8 @@ public class Game extends Canvas implements Runnable {
 		g.drawImage(view, 0, 0,getWidth(),getHeight(),null);
 		g.setFont(new Font("Courier",0,50));
 		g.setColor(Color.WHITE);
-		g.drawString("x:" + player.x +"y:" + player.y, 50, 50);
+		g.fillRect(Mouse.getX(), Mouse.getY(), 30,30);
+		g.drawString("Button: " +Mouse.getButton(), 50, 50);
 		g.dispose();
 		bs.show();
 	}
