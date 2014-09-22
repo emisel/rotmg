@@ -31,6 +31,7 @@ public abstract class Mob extends Entity {
 	}
 	
 	protected void shoot(int x,int y, double dir){
+		dir = Math.toDegrees(dir);
 		System.out.println(dir);
 		
 	}
