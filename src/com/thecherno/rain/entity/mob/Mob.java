@@ -1,12 +1,19 @@
 package com.thecherno.rain.entity.mob;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.thecherno.rain.entity.Entity;
+import com.thecherno.rain.entity.projectile.MonsterProjectile;
+import com.thecherno.rain.entity.projectile.Projectile;
 import com.thecherno.rain.graphics.Sprite;
 
 public abstract class Mob extends Entity {
 	protected Sprite sprite;
 	protected int dir = 0;
 	protected boolean moving = false;
+	
+	private List<Projectile> shoots = new ArrayList<Projectile>();
 	
 	public void move(int xa, int ya) {
 		if (xa != 0 && ya != 0) {
@@ -31,9 +38,9 @@ public abstract class Mob extends Entity {
 	}
 	
 	protected void shoot(int x,int y, double dir){
-		dir = Math.toDegrees(dir);
-		System.out.println(dir);
-		
+		Projectile p = new MonsterProjectile(x, y, dir);
+		shoots.add(p);
+		level.add(p);
 	}
 
 	

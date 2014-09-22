@@ -106,6 +106,7 @@ public class Game extends Canvas implements Runnable {
 	private void update() {
 		keyboard.update();
 		player.update();
+		level.update();
 		
 	}
 	
