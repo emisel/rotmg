@@ -2,7 +2,7 @@ package com.thecherno.rain.graphics;
 
 import java.util.Random;
 
-import com.thecherno.rain.level.Level;
+import com.thecherno.rain.entity.projectile.Projectile;
 import com.thecherno.rain.level.tile.Tile;
 
 public class Screen {
@@ -54,18 +54,20 @@ public class Screen {
 		}
 	}
 	
-	public void renderTile(int xp, int yp,Sprite sprite){
+	public void renderProjectile(int xp, int yp,Projectile projectile){
 		xp -= xOffset;
 		yp -= yOffset;
-		for (int y = 0; y< sprite.SIZE; y++) {
+		for (int y = 0; y< projectile.getSprite().SIZE; y++) {
 			//absolute pos
 			int ya = y + yp;
-			for (int x = 0; x< sprite.SIZE; x++) {
+			for (int x = 0; x< projectile.getSprite().SIZE; x++) {
 				//absolute pos
 				int xa = x + xp;
-				if (xa < -sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
+				if (xa < -projectile.getSprite().SIZE || xa >= width || ya < 0 || ya >= height) break;
 				if (xa < 0) xa = 0;
-				pixels[xa + ya * width] = sprite.pixels[x + y * sprite.SIZE];
+				int col = projectile.getSprite().pixels[x + y * projectile.getSprite().SIZE];
+				if (col != 0xffff00ff)
+				pixels[xa + ya * width] = col;
 			}
 		}
 	}

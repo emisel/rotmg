@@ -13,6 +13,7 @@ public class SpriteSheet {
 	
 	public static SpriteSheet sheet = new SpriteSheet("/textures/sheets/sprite_sheet.png", 256);
 	public static SpriteSheet spawnLevel = new SpriteSheet("/textures/sheets/spawnlevel.png",48);
+	public static SpriteSheet projectiles = new SpriteSheet("/textures/sheets/projectiles/wizard.png",48);
 	
 	public SpriteSheet(String path,int size){
 	

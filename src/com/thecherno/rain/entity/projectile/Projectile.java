@@ -20,4 +20,8 @@ public class Projectile extends Entity {
 	protected void move() {
 		
 	}
+	
+	public Sprite getSprite() {
+		return sprite;
+	}
 }

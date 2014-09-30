@@ -11,9 +11,9 @@ public class MonsterProjectile extends Projectile {
 		super(x,y,dir);
 		damage = 200;
 		rateOfFire = 5;
-		speed = 20;
+		speed = 5;
 		damage = 20;
-		sprite = Sprite.grass;
+		sprite = Sprite.projectile;
 		range = 100;
 		
 		nx = speed * Math.cos(angle);
@@ -30,7 +30,7 @@ public class MonsterProjectile extends Projectile {
 	}
 	
 	public void render(Screen screen) {
-		screen.renderTile(x, y, sprite);
+		screen.renderProjectile(x, y, this);
 	}
 
 }
