@@ -6,7 +6,9 @@ import com.thecherno.rain.graphics.Sprite;
 public class Projectile extends Entity {
 	protected final int xOrigin, yOrigin;
 	protected double angle;
+	protected double x,y;
 	protected  Sprite sprite;
+	protected double distance;
 	protected double nx,ny;
 	protected double speed, rateOfFire, range, damage;
 	

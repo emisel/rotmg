@@ -26,7 +26,7 @@ public abstract class Entity {
 	
 	public void remove() {
 		//Remove from level
-		removed = false;
+		removed = true;
 	}
 	public boolean isRemoved(){
 		return removed;

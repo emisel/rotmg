@@ -1,6 +1,7 @@
 package com.thecherno.rain.entity.mob;
 
 import com.thecherno.rain.Game;
+import com.thecherno.rain.entity.projectile.Projectile;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.input.Keyboard;
@@ -43,10 +44,18 @@ public class Player extends Mob {
 		} else {
 			walking = false;
 		}
+		clear();
 				
 		updateShooting();
 	}
 	
+	private void clear() {
+			for (int i = 0; i < shoots.size(); i++) {
+				if(shoots.get(i).isRemoved()) {
+					shoots.remove(i);
+				}
+			}
+	}
 	private void updateShooting() {
 		if (Mouse.getButton() == 1) {
 			double dx = (Mouse.getX() - Game.getWindowWidth()/2);
