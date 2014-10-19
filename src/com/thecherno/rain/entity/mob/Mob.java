@@ -13,7 +13,6 @@ public abstract class Mob extends Entity {
 	protected int dir = 0;
 	protected boolean moving = false;
 	
-	protected List<Projectile> shoots = new ArrayList<Projectile>();
 	
 	public void move(int xa, int ya) {
 		if (xa != 0 && ya != 0) {
@@ -31,7 +30,7 @@ public abstract class Mob extends Entity {
 			x += xa;
 			y += ya;
 		}
-		System.out.println(shoots.size());
+		System.out.println(level.getProjectiles().size());
 	}
 	
 	public void update(){
@@ -40,8 +39,7 @@ public abstract class Mob extends Entity {
 	
 	protected void shoot(int x,int y, double dir){
 		Projectile p = new MonsterProjectile(x, y, dir);
-		shoots.add(p);
-		level.add(p);
+		level.addProjectile(p);
 	}
 
 	

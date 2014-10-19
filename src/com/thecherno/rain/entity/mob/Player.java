@@ -50,9 +50,9 @@ public class Player extends Mob {
 	}
 	
 	private void clear() {
-			for (int i = 0; i < shoots.size(); i++) {
-				if(shoots.get(i).isRemoved()) {
-					shoots.remove(i);
+			for (int i = 0; i < level.getProjectiles().size(); i++) {
+				if(level.getProjectiles().get(i).isRemoved()) {
+					level.getProjectiles().remove(i);
 				}
 			}
 	}

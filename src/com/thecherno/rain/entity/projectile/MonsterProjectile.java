@@ -11,10 +11,10 @@ public class MonsterProjectile extends Projectile {
 		super(x,y,dir);
 		damage = 200;
 		rateOfFire = 5;
-		speed = 5;
+		speed = 1;
 		damage = 20;
 		sprite = Sprite.projectile;
-		range = 100;
+		range = 200;
 		
 		nx = speed * Math.cos(angle);
 		ny = speed * Math.sin(angle);
