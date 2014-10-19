@@ -1,6 +1,7 @@
 package com.thecherno.rain.entity.mob;
 
 import com.thecherno.rain.Game;
+import com.thecherno.rain.entity.projectile.MonsterProjectile;
 import com.thecherno.rain.entity.projectile.Projectile;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
@@ -14,6 +15,8 @@ public class Player extends Mob {
 	private int animate = 0;
 	private boolean walking = false;
 	
+	private int fireRate = 0;
+	
 	public Player(Keyboard input){
 		this.input = input;
 		sprite = Sprite.player_up;
@@ -22,14 +25,15 @@ public class Player extends Mob {
 		this.x = x;
 		this.y = y;
 		this.input = input;
+		fireRate = MonsterProjectile.FIRE_RATE;
+		
 	}
 	public Player(TileCoordinate tc ,Keyboard input){
-		this.x = tc.x();
-		this.y = tc.y();
-		this.input = input;
+		this(tc.x(),tc.y(),input);
 	}
 	
 	public void update(){
+		if (fireRate > 0) fireRate--; 
 		int xa = 0, ya = 0;
 		animate++;
 		if (animate > 7500) animate = 0;
@@ -57,11 +61,12 @@ public class Player extends Mob {
 			}
 	}
 	private void updateShooting() {
-		if (Mouse.getButton() == 1) {
+		if (Mouse.getButton() == 1 && fireRate <= 0) {
 			double dx = (Mouse.getX() - Game.getWindowWidth()/2);
 			double dy = (Mouse.getY() - Game.getWindowHeight()/2);
 			double dir = Math.atan2(dy, dx);
 			shoot(x,y,dir);
+			fireRate = MonsterProjectile.FIRE_RATE;
 		}
 	}
 	public void render(Screen screen){
