@@ -13,10 +13,10 @@ public class Level {
 	protected int width,height;
 	protected int [] tilesInt;
 	protected int [] tiles;
-	
+
 	private List<Entity> entities = new ArrayList<Entity>();
 	private List<Projectile> projectiles = new ArrayList<Projectile>();
-	
+
 	public static Level spawn = new SpawnLevel("/levels/spawnlevel.png");
 
 	public Level (int width, int height){
@@ -39,6 +39,7 @@ public class Level {
 		entities.add(e);
 	}
 	public void addProjectile(Projectile p) {
+		p.init(this);
 		projectiles.add(p);
 	}
 
@@ -64,6 +65,21 @@ public class Level {
 		return projectiles;
 	}
 
+	public boolean tileCollision(double x, double y,double xa, double ya, int size) {
+
+		boolean solid = false;
+
+		for (int c = 0; c<4; c++){
+			int xt = (((int)x+(int)xa) + c % 2 *  - 10 ) / 16;
+			int yt = (((int)y+(int)ya) + c / 2 * 2- 6) / 16;
+
+			if (getTile(xt, yt).solid()) solid = true;
+		}
+
+
+		return solid;
+	}
+
 	public void render(int xscroll, int yscroll, Screen screen) {
 
 		screen.setOffset(xscroll, yscroll);
@@ -76,8 +92,8 @@ public class Level {
 
 		for (int y = y0; y < y1; y++){
 			for (int x= x0 ; x < x1; x++){
-			getTile(x,y).render(x, y, screen);
-				
+				getTile(x,y).render(x, y, screen);
+
 			}
 		}
 		for (int i = 0;i < entities.size(); i++) {
