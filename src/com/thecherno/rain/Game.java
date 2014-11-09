@@ -8,16 +8,16 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.Random;
 
 import javax.swing.JFrame;
 
 import com.thecherno.rain.entity.mob.Player;
 import com.thecherno.rain.graphics.Screen;
+import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.input.Keyboard;
 import com.thecherno.rain.input.Mouse;
 import com.thecherno.rain.level.Level;
-import com.thecherno.rain.level.RandomLevel;
-import com.thecherno.rain.level.SpawnLevel;
 import com.thecherno.rain.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable {
@@ -123,6 +123,15 @@ public class Game extends Canvas implements Runnable {
 		level.render(xScroll, yScroll, screen);
 		player.render(screen);
 
+		Sprite sprite = new Sprite(2,2,0xffffff);
+		Random r = new Random();
+		for (int i = 0; i < 100 ; i++) {
+			int x = r.nextInt(10);
+			int y = r.nextInt(10);
+			screen.renderSprite(width - 160 + x,150 + y,sprite,true);
+		
+		}
+		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
