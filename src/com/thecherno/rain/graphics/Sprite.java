@@ -41,6 +41,9 @@ public class Sprite {
 	//projectile sprites
 	public static Sprite projectile = new Sprite(16,0,0,SpriteSheet.projectiles);
 	
+	//particle sprites
+	public static Sprite particle_normal = new Sprite(3, 0xaaaaaa);
+	
 	
 	public Sprite(int width, int height, int colour) {
 		
@@ -54,8 +57,8 @@ public class Sprite {
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		super();
 		SIZE = size;
-		this.width = width;
-		this.height = height;
+		this.width = size;
+		this.height = size;
 		pixels = new int[SIZE*SIZE];
 		this.x = x * size;
 		this.y = y * size;
@@ -65,8 +68,8 @@ public class Sprite {
 	}
 	public Sprite(int size, int colour){
 		SIZE = size;
-		this.width = width;
-		this.height = height;
+		this.width = size;
+		this.height = size;
 		pixels = new int[SIZE*SIZE];
 		setColour(colour);
 	}

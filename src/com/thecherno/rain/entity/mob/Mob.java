@@ -1,9 +1,7 @@
 package com.thecherno.rain.entity.mob;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.thecherno.rain.entity.Entity;
+import com.thecherno.rain.entity.particle.Particle;
 import com.thecherno.rain.entity.projectile.MonsterProjectile;
 import com.thecherno.rain.entity.projectile.Projectile;
 import com.thecherno.rain.graphics.Sprite;
@@ -29,6 +27,9 @@ public abstract class Mob extends Entity {
 		if (!collision(xa,ya)) {
 			x += xa;
 			y += ya;
+		} else {
+			Particle p = new Particle(50,x,y,50);
+			level.add(p);
 		}
 	}
 	
