@@ -43,16 +43,19 @@ public class Level {
 	}
 	public void add(Entity e) {
 		e.init(this);
-		if (e instanceof Particle) {
-			particles.add((Particle) e);
-		} else if (e instanceof Projectile) {
-			projectiles.add((Projectile) e);	
-		}
-		else {
+
 			entities.add(e);			
-		}
+		
 	}
 	
+	public void add(Particle p) {
+		p.init(this);
+		particles.add(p);
+	}
+	public void add(Projectile p) {
+		p.init(this);
+		projectiles.add(p);
+	}
 
 	protected void generateLevel() {
 		// TODO Auto-generated method stub
