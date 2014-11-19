@@ -27,10 +27,7 @@ public abstract class Mob extends Entity {
 		if (!collision(xa,ya)) {
 			x += xa;
 			y += ya;
-		} else {
-			Particle p = new Particle(50,x,y,50);
-			level.add(p);
-		}
+		} 
 	}
 	
 	public void update(){
@@ -40,7 +37,7 @@ public abstract class Mob extends Entity {
 	protected void shoot(int x,int y, double dir){
 		Projectile p = new MonsterProjectile(x, y, dir);
 		
-		level.addProjectile(p);
+		level.add(p);
 	}
 
 	

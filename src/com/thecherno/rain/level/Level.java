@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.thecherno.rain.entity.Entity;
+import com.thecherno.rain.entity.Spawner;
+import com.thecherno.rain.entity.Spawner.Type;
+import com.thecherno.rain.entity.particle.Particle;
 import com.thecherno.rain.entity.projectile.Projectile;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.level.tile.Tile;
@@ -16,6 +19,7 @@ public class Level {
 
 	private List<Entity> entities = new ArrayList<Entity>();
 	private List<Projectile> projectiles = new ArrayList<Projectile>();
+	private List<Particle> particles = new ArrayList<Particle>();
 
 	public static Level spawn = new SpawnLevel("/levels/spawnlevel.png");
 
@@ -29,6 +33,8 @@ public class Level {
 	public Level(String path){
 		loadLevel(path);
 		generateLevel();
+		
+		add(new Spawner(16*25,16*15,Spawner.Type.PARTICLE, 50,this));
 	}
 
 	protected void loadLevel(String path) {
@@ -37,12 +43,16 @@ public class Level {
 	}
 	public void add(Entity e) {
 		e.init(this);
-		entities.add(e);
+		if (e instanceof Particle) {
+			particles.add((Particle) e);
+		} else if (e instanceof Projectile) {
+			projectiles.add((Projectile) e);	
+		}
+		else {
+			entities.add(e);			
+		}
 	}
-	public void addProjectile(Projectile p) {
-		p.init(this);
-		projectiles.add(p);
-	}
+	
 
 	protected void generateLevel() {
 		// TODO Auto-generated method stub
@@ -55,6 +65,9 @@ public class Level {
 		}
 		for (int i = 0;i < projectiles.size(); i++) {
 			projectiles.get(i).update();
+		}
+		for (int i = 0;i < particles.size(); i++) {
+			particles.get(i).update();
 		}
 
 	}
@@ -102,6 +115,9 @@ public class Level {
 		}
 		for (int i = 0;i < projectiles.size(); i++) {
 			projectiles.get(i).render(screen);
+		}
+		for (int i = 0;i < particles.size(); i++) {
+			particles.get(i).render(screen);
 		}
 	}
 
