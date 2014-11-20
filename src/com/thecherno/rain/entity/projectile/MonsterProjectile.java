@@ -1,6 +1,6 @@
-package com.thecherno.rain.entity.projectile;
+	package com.thecherno.rain.entity.projectile;
 
-import com.thecherno.rain.entity.Entity;
+import com.thecherno.rain.entity.spawner.ParticleSpawner;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
 
@@ -22,7 +22,10 @@ public class MonsterProjectile extends Projectile {
 	}
 	
 	public void update() {
-		if (level.tileCollision(x, y, nx, ny, 7)) remove();
+		if (level.tileCollision(x, y, nx, ny, 7)) {
+			level.add(new ParticleSpawner((int)x,(int)y, 44,50,level));
+			remove();
+		}
 		move();
 	}
 
