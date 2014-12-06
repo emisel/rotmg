@@ -22,7 +22,7 @@ public class MonsterProjectile extends Projectile {
 	}
 	
 	public void update() {
-		if (level.tileCollision(x, y, nx, ny, 7)) {
+		if (level.tileCollision((int)(x + nx), (int)(y + ny), 7 ,4 ,4)) {
 			level.add(new ParticleSpawner((int)x,(int)y, 44,100,level));
 			remove();
 		}
