@@ -84,10 +84,13 @@ public class Level {
 		boolean solid = false;
 
 		for (int c = 0; c < 4; c++){
-			int xt = (x - c % 2 *  size + xOffset) >> 4;
-			int yt = (y - c / 2 * size + yOffset) >> 4;
-
-			if (getTile(xt, yt).solid()) solid = true;
+			int xt = (x - c % 2 *  1 - 4) >> 4;
+			int yt = (y - c / 2 * 1 - 5) >> 4;
+            //xt = x; yt = y;  
+			if (getTile(xt, yt).solid()) {
+				System.out.println("collisison @ xtyt " + xt + ":" +  yt + " xy " + x  +": " + y);
+				solid = true;
+			}
 		}
 
 
